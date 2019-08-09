@@ -1,9 +1,10 @@
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Navbar from '../components/layout/Navbar';
-import ClientNavbar from '../components/layout/clientNavbar';
+import ClientNavbar from '../components/layout/ClientNavbar';
 import Login from '../components/auth/Login';
 import Signup from '../components/auth/Signup';
 import account from '../components/client/account';

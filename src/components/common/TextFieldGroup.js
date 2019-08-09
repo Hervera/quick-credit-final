@@ -8,7 +8,7 @@ const TextFieldGroup = ({
   field, value, label, error, type, onChange, checkUserExists,
 }) => (
   <div className={classnames('each-input', { 'has-error': error })}>
-    <label>{label}</label>
+    <label className="control-label">{label}</label>
     <input
       onChange={onChange}
       onBlur={checkUserExists}

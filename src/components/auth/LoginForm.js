@@ -71,7 +71,7 @@ class LoginForm extends React.Component {
           type="password"
         />
 
-        <button className="btn green-btn" disabled={isLoading} type="submit">Login</button>
+        <button className="btn green-btn" disabled={isLoading}>Login</button>
       </form>
     );
   }
@@ -81,14 +81,5 @@ class LoginForm extends React.Component {
 LoginForm.propTypes = {
   login: PropTypes.func.isRequired,
 };
-
-// const mapDispatchToProps = dispatch => ({
-//   login: arg => dispatch(login(arg)),
-// });
-
-// LoginForm.contextTypes = {
-//   // eslint-disable-next-line react/forbid-prop-types
-//   router: PropTypes.object.isRequired,
-// };
 
 export default connect(null, { login })(LoginForm);
