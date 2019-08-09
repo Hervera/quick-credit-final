@@ -1,5 +1,7 @@
 # Quick credit final
 
+[![Build Status](https://travis-ci.org/Hervera/quick-credit-final.svg?branch=develop)](https://travis-ci.org/Hervera/quick-credit-final)
+
 Quick credit final connects [frontend pages](https://hervera.github.io/quick-credit/UI) with [backend API Endpoint](https://hervera-quick-credit.herokuapp.com/documentation).
 
 

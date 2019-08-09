@@ -1,8 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import '../../css/styles.css';
 import '../../css/responsive.css';
+import LoginForm from './LoginForm';
 
 class Login extends React.Component {
+  componentWillMount() {
+    if (this.props.auth.isAuthenticated) {
+      window.location.href = '/loans';
+    }
+  }
+
   render() {
     return (
       <div className="main">
@@ -18,17 +27,7 @@ class Login extends React.Component {
               <h3>Login Form</h3>
             </div>
             <div className="card-body">
-              <form id="loginForm">
-                <div className="each-input">
-                  <label>Email Address</label>
-                  <input type="email" name="email" className="input-form" id="email" required />
-                </div>
-                <div className="each-input">
-                  <label>Password</label>
-                  <input type="password" name="password" className="input-form" id="password" required />
-                </div>
-                <button className="btn green-btn" type="submit">Login</button>
-              </form>
+              <LoginForm />
             </div>
           </div>
         </section>
@@ -36,5 +35,12 @@ class Login extends React.Component {
     );
   }
 }
+Login.propTypes = {
+  auth: PropTypes.instanceOf(Object).isRequired,
+};
 
-export default Login;
+const mapStateToProps = state => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, {})(Login);
