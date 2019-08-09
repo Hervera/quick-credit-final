@@ -7,7 +7,7 @@ body {
 }
 
 body.auth {
-    background: url(/public/images/wallpaper-high-quality.jpg) no-repeat;
+    background: url("../../public/images/wallpaper-high-quality.jpg") no-repeat;
     background-size: cover;
     /* background-size: 100% 100%;*/
 }
