@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export function userSignupRequest(userData) {
-  return () => axios.post('http://localhost:3000/api/v2/auth/signup', {
+  return () => axios.post('https://hervera-quick-credit.herokuapp.com/api/v2/auth/signup', {
     firstname: userData.firstname,
     lastname: userData.lastname,
     address: userData.address,

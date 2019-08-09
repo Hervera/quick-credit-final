@@ -19,7 +19,7 @@ export function logout() {
 }
 
 export function login(data) {
-  return dispatch => axios.post('http://localhost:3000/api/v2/auth/signin', {
+  return dispatch => axios.post('https://hervera-quick-credit.herokuapp.com/api/v2/auth/signin', {
     email: data.email,
     password: data.password,
   }).then((res) => {
