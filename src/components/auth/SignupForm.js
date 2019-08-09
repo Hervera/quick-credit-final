@@ -5,7 +5,7 @@ import validateInput from '../../middleware/validations/signup';
 import TextFieldGroup from '../common/TextFieldGroup';
 import { userSignupRequest } from '../../actions/signupActions';
 
-class SignupForm extends React.Component {
+export class SignupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
