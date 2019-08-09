@@ -26,6 +26,17 @@ module.exports = {
           { loader: 'css-loader' },
         ],
       },
+      {
+        test: /.(jpg|jpeg|png|gif|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name]-[hash:8].[ext]',
+            },
+          },
+        ],
+      },
     ],
   },
   devServer: {
