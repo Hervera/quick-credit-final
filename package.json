@@ -1,12 +1,16 @@
 {
   "name": "quick-credit-final",
   "version": "1.0.0",
+  "engines": {
+    "node": "10.16.0"
+  },
   "description": "Quick credit final connects [frontend pages](https://hervera.github.io/quick-credit/UI) with [backend API Endpoint](https://hervera-quick-credit.herokuapp.com/documentation).",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "webpack --mode production",
     "start": "webpack-dev-server --open --mode development",
+    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
     "lint": "./node_modules/.bin/eslint src",
     "lint-fixup": "./node_modules/.bin/eslint src --ext .js,.jsx --fix"
   },
@@ -25,9 +29,9 @@
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
+    "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.6",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0",
+    "coveralls": "^3.0.6",
     "eslint": "^6.1.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-config-prettier": "^6.0.0",
@@ -39,6 +43,7 @@
     "html-webpack-plugin": "^3.2.0",
     "jest": "^24.8.0",
     "prettier": "^1.18.2",
+    "react-test-renderer": "^16.9.0",
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.7.2"
@@ -48,6 +53,8 @@
     "classnames": "^2.2.6",
     "css-loader": "^3.2.0",
     "dotenv": "^8.0.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "history": "^4.9.0",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.15",

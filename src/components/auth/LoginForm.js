@@ -7,7 +7,7 @@ import validateInput from '../../middleware/validations/login';
 import { login } from '../../actions/authActions';
 import history from '../../helpers/history';
 
-class LoginForm extends React.Component {
+export class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -71,7 +71,7 @@ class LoginForm extends React.Component {
           type="password"
         />
 
-        <button className="btn green-btn" disabled={isLoading}>Login</button>
+        <button className="btn green-btn" disabled={isLoading} type="submit">Login</button>
       </form>
     );
   }
