@@ -1,4 +1,10 @@
+/* eslint-disable react/no-unused-prop-types */
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { userSignupRequest } from '../../actions/signupActions';
+import { addFlashMessage } from '../../actions/flashMessages.js';
+import SignupForm from './SignupForm';
 
 class Signup extends Component {
   render() {
@@ -16,33 +22,10 @@ class Signup extends Component {
               <h3>Register Now</h3>
             </div>
             <div className="card-body">
-              <form action="login.html">
-                <div className="each-input">
-                  <label>First Name</label>
-                  <input type="text" name="name" className="input-form" />
-                </div>
-                <div className="each-input">
-                  <label>Last Name</label>
-                  <input type="text" name="name" className="input-form" />
-                </div>
-                <div className="each-input">
-                  <label>Email Address</label>
-                  <input type="email" name="email" className="input-form" />
-                </div>
-                <div className="each-input">
-                  <label>Address</label>
-                  <input type="text" name="address" className="input-form" />
-                </div>
-                <div className="each-input">
-                  <label>Password</label>
-                  <input type="password" name="password" className="input-form" />
-                </div>
-                <div className="each-input">
-                  <label>Confirm Password</label>
-                  <input type="password" name="confirm-password" className="input-form" />
-                </div>
-                <button className="btn blue-btn" type="submit">Sign up</button>
-              </form>
+              <SignupForm
+                userSignupRequest={userSignupRequest}
+                addFlashMessage={addFlashMessage}
+              />
             </div>
           </div>
         </section>
@@ -51,4 +34,10 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+Signup.propTypes = {
+  userSignupRequest: PropTypes.func.isRequired,
+  addFlashMessage: PropTypes.func.isRequired,
+};
+
+
+export default connect(null, { userSignupRequest, addFlashMessage })(Signup);

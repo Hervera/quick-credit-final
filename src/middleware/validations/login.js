@@ -8,6 +8,10 @@ export default function validateInput(data) {
     errors.email = 'This field is required';
   }
 
+  if (!Validator.isEmail(data.email)) {
+    errors.email = 'Email is invalid';
+  }
+
   if (Validator.isEmpty(data.password)) {
     errors.password = 'This field is required';
   }

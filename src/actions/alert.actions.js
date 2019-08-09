@@ -1,11 +1,9 @@
+/* eslint-disable no-use-before-define */
 import { alertConstants } from '../constants';
 
 export const alertActions = {
-  // eslint-disable-next-line no-use-before-define
   success,
-  // eslint-disable-next-line no-use-before-define
   error,
-  // eslint-disable-next-line no-use-before-define
   clear,
 };
 
