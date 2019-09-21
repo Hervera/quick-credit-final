@@ -1,76 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import validateInput from '../../middleware/validations/signup';
 import TextFieldGroup from '../common/TextFieldGroup';
-import { userSignupRequest } from '../../actions/signupActions';
 
 export class SignupForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      firstname: '',
-      lastname: '',
-      address: '',
-      email: '',
-      password: '',
-      passwordConfirmation: '',
-      errors: {},
-      isLoading: false,
-      invalid: false,
-    };
-
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
-
-  onSubmit(e) {
-    e.preventDefault();
-
-    if (this.isValid()) {
-      this.setState({ errors: {}, isLoading: true });
-      const { userSignupRequest: SignupRequest } = this.props;
-      SignupRequest(this.state).then(
-        () => {
-          const { addFlashMessage } = this.props;
-          addFlashMessage({
-            type: 'success',
-            text: 'You signed up successfully. Welcome!',
-          });
-          window.location.href = '/loans';
-        },
-        err => this.setState({ errors: err.response.data, isLoading: false }),
-      );
-    }
-  }
-
-  isValid() {
-    const { errors, isValid } = validateInput(this.state);
-
-    if (!isValid) {
-      this.setState({ errors });
-    }
-
-    return isValid;
-  }
-
   render() {
     const {
       errors, firstname, lastname, email, address,
-      password, passwordConfirmation, isLoading, invalid,
-    } = this.state;
+      password, passwordConfirmation, onSubmit, onChange, registerError,
+    } = this.props;
 
     return (
-      <form onSubmit={this.onSubmit}>
-
+      <form onSubmit={onSubmit}>
         <TextFieldGroup
           error={errors.firstname}
           label="First Name"
-          onChange={this.onChange}
+          onChange={onChange}
           value={firstname}
           field="firstname"
         />
@@ -78,7 +21,7 @@ export class SignupForm extends React.Component {
         <TextFieldGroup
           error={errors.lastname}
           label="Last Name"
-          onChange={this.onChange}
+          onChange={onChange}
           value={lastname}
           field="lastname"
         />
@@ -86,7 +29,7 @@ export class SignupForm extends React.Component {
         <TextFieldGroup
           error={errors.address}
           label="Address"
-          onChange={this.onChange}
+          onChange={onChange}
           value={address}
           field="address"
         />
@@ -94,7 +37,7 @@ export class SignupForm extends React.Component {
         <TextFieldGroup
           error={errors.email}
           label="Email"
-          onChange={this.onChange}
+          onChange={onChange}
           value={email}
           field="email"
         />
@@ -102,7 +45,7 @@ export class SignupForm extends React.Component {
         <TextFieldGroup
           error={errors.password}
           label="Password"
-          onChange={this.onChange}
+          onChange={onChange}
           value={password}
           field="password"
           type="password"
@@ -111,14 +54,14 @@ export class SignupForm extends React.Component {
         <TextFieldGroup
           error={errors.passwordConfirmation}
           label="Password Confirmation"
-          onChange={this.onChange}
+          onChange={onChange}
           value={passwordConfirmation}
           field="passwordConfirmation"
           type="password"
         />
-
+        { registerError && <p className="alert alert-danger">{registerError}</p>}
         <div className="form-group">
-          <button disabled={isLoading || invalid} className="btn blue-btn">
+          <button className="btn blue-btn">
             Sign up
           </button>
         </div>
@@ -127,9 +70,4 @@ export class SignupForm extends React.Component {
   }
 }
 
-SignupForm.propTypes = {
-  userSignupRequest: PropTypes.func.isRequired,
-  addFlashMessage: PropTypes.func.isRequired,
-};
-
-export default connect(null, { userSignupRequest })(SignupForm);
+export default SignupForm;

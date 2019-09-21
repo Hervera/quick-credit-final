@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 class CreateLoan extends Component {
   render() {
+    const fullName = `${localStorage.getItem('firstName')} ${localStorage.getItem('lastName')}`;
     return (
       <div className="main-content">
         <div className="aside" id="aside">
@@ -26,7 +27,7 @@ class CreateLoan extends Component {
               <form method="POST">
                 <div className="each-input">
                   <label>Full Name</label>
-                  <input type="text" name="name" className="input-form readonly" value="Herve Nkurikiyimfura" readOnly="true" />
+                  <input type="text" name="name" className="input-form readonly" value={fullName} readOnly />
                 </div>
                 <div className="each-input">
                   <label>Amount in ($) for a loan </label>
@@ -35,7 +36,7 @@ class CreateLoan extends Component {
                 <div className="each-input">
                   <label>Tenor</label>
                   <select name="tenor" className="input-form">
-                    <option value="1" selected="true">1</option>
+                    <option value="1" defaultValue>1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
@@ -55,13 +56,13 @@ class CreateLoan extends Component {
                     type="number"
                     name="paymentInstallment"
                     placeholder="Auto complete"
-                    readOnly="true"
+                    readOnly
                     className="input-form"
                   />
                 </div>
                 <div className="each-input">
                   <label>Interest (5% of the amount)</label>
-                  <input type="number" name="interest" placeholder="Auto complete" readOnly="true" className="input-form" />
+                  <input type="number" name="interest" placeholder="Auto complete" readOnly className="input-form" />
                 </div>
                 <button className="btn blue-btn" type="submit">Request A Loan</button>
               </form>

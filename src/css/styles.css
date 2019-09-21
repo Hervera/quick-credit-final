@@ -553,3 +553,41 @@ button {
 .has-error .control-label{
   color: #a94442;
 }
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.alert {
+  position: relative;
+  padding: .75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}
+
+p {
+  font-size: 21px;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 21px;
+  line-height: 1.58;
+  letter-spacing: -.003em;
+}
+
+
+.circle.profile-pic, .username {
+  display: inline-block;
+  vertical-align: top;
+}
+.username {
+  padding-top: 10px;
+  padding-left: 4px;
+}
+
+.usernm, .menu-dropdown {
+  display: inline-block;
+  vertical-align: top;
+}

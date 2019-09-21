@@ -7,7 +7,6 @@ describe('<Signup />', () => {
 
   const props = {
     userSignupRequest: jest.fn(),
-    addFlashMessage: jest.fn(),
     firstname: '',
     lastname: '',
     address: '',
@@ -15,7 +14,6 @@ describe('<Signup />', () => {
     password: '',
     passwordConfirmation: '',
     errors: {},
-    isLoading: false,
     invalid: false,
   };
 
