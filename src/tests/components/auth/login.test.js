@@ -10,7 +10,6 @@ describe('<Login />', () => {
     email: '',
     password: '',
     errors: {},
-    isLoading: false,
   };
 
   beforeEach(() => {

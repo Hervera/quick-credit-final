@@ -1,9 +1,14 @@
 import isEmpty from 'lodash/isEmpty';
-import { SET_CURRENT_USER } from '../actions/types';
+import {
+  SET_CURRENT_USER, SET_LOGIN_ERROR, SET_SIGNUP_ERROR, SET_SIGNUP_SUCCESS,
+} from '../actions/types';
 
 const initialState = {
   isAuthenticated: false,
   user: {},
+  loginError: null,
+  signupSuccess: false,
+  signupError: null,
 };
 
 export default (state = initialState, action = {}) => {
@@ -12,6 +17,21 @@ export default (state = initialState, action = {}) => {
       return {
         isAuthenticated: !isEmpty(action.user),
         user: action.user,
+      };
+    case SET_LOGIN_ERROR:
+      return {
+        ...state,
+        loginError: action.loginError,
+      };
+    case SET_SIGNUP_SUCCESS:
+      return {
+        ...state,
+        signupSuccess: action.signupSuccess,
+      };
+    case SET_SIGNUP_ERROR:
+      return {
+        ...state,
+        signupError: action.signupError,
       };
     default: return state;
   }

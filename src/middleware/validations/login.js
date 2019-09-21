@@ -1,21 +1,17 @@
-import Validator from 'validator';
 import isEmpty from 'lodash/isEmpty';
 
 export default function validateInput(data) {
   const errors = {};
-
-  if (Validator.isEmpty(data.email)) {
-    errors.email = 'This field is required';
-  }
-
-  if (!Validator.isEmail(data.email)) {
+  const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+  if (data.email === '') {
+    errors.email = 'Email is required';
+  } else if (emailRegex.test(data.email) === false) {
     errors.email = 'Email is invalid';
   }
 
-  if (Validator.isEmpty(data.password)) {
-    errors.password = 'This field is required';
+  if (data.password === '') {
+    errors.password = 'Password is required';
   }
-
   return {
     errors,
     isValid: isEmpty(errors),
