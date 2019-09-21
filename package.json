@@ -12,7 +12,6 @@
     "build": "webpack --mode production",
     "start-dev": "webpack-dev-server --open --mode development",
     "start": "node server.js",
-    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
     "coverage": "nyc npm run test && nyc report --reporter=text-lcov | coveralls",
     "lint": "./node_modules/.bin/eslint src",
     "lint-fixup": "./node_modules/.bin/eslint src --ext .js,.jsx --fix"
