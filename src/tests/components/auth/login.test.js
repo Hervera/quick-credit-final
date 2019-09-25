@@ -14,7 +14,7 @@ describe('<Login />', () => {
 
   beforeEach(() => {
     wrapper = shallow(<LoginForm {...props} />);
-    console.log(wrapper.debug());
+    // console.log(wrapper.debug());
   });
 
   it('should render Login component', () => {

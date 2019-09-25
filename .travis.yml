@@ -1,4 +1,6 @@
-
+env:
+  global:
+    - CC_TEST_REPORTER_ID=27497e951fd0f51f22a213ca7a64cf90ad1e855e56c47146b6f1f3867d4ed1ad
 language: node_js
 node_js:
   - "stable"
@@ -15,4 +17,7 @@ script:
   - npm test -- -u 
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-
+after_success:
+  - npm run test:cov
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - coveralls < ./coverage/lcov.info
