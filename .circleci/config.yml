@@ -1,0 +1,33 @@
+version: 2.1
+jobs:
+  run_tests:
+    docker:
+      - image: circleci/node:10
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: 
+          name: Install dependencies
+          command: npm install
+ 
+      # Run jest
+      - run: 
+          name: Run unit tests
+          command: npm run test
+
+      - run:
+          name: Code coverage
+          command: npm run test:coverage
+
+      # Upload results
+      - store_test_results:
+          path: reports
+
+      - store_artifacts:
+          path: coverage
+
+workflows:
+  build_test:
+    jobs:
+      - run_tests
+
